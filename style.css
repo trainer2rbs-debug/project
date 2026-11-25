@@ -1,0 +1,718 @@
+/* ==========================================================================
+   CSS Variables & Color Palette
+   Clean, professional Indigo + Slate palette with semantic status colors
+   ========================================================================== */
+:root {
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-light: #eef2ff;
+  --accent: #06b6d4;
+
+  --bg-gradient-start: #0f172a;
+  --bg-gradient-mid: #1e1b4b;
+  --bg-gradient-end: #312e81;
+
+  --surface: rgba(255, 255, 255, 0.96);
+  --surface-border: rgba(255, 255, 255, 0.28);
+
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+
+  --input-bg: #f8fafc;
+  --input-border: #cbd5e1;
+  --input-focus: #4f46e5;
+
+  --success: #10b981;
+  --success-bg: #ecfdf5;
+  --success-border: #a7f3d0;
+
+  --warning: #f59e0b;
+  --info: #3b82f6;
+
+  --error: #ef4444;
+  --error-bg: #fef2f2;
+  --error-border: #fecaca;
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 9999px;
+
+  --shadow-card: 0 24px 60px -12px rgba(15, 23, 42, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.12);
+  --shadow-btn: 0 10px 24px -6px rgba(79, 70, 229, 0.48);
+
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Base Reset & Typography
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  color: var(--text-main);
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--bg-gradient-start) 0%,
+    var(--bg-gradient-mid) 52%,
+    var(--bg-gradient-end) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Decorative Background Orbs
+   ========================================================================== */
+.bg-decoration {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  animation: floatOrb 12s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+  width: 380px;
+  height: 380px;
+  background: #6366f1;
+  top: -100px;
+  left: -80px;
+}
+
+.orb-2 {
+  width: 340px;
+  height: 340px;
+  background: #06b6d4;
+  bottom: -100px;
+  right: -60px;
+  animation-delay: -4s;
+}
+
+.orb-3 {
+  width: 240px;
+  height: 240px;
+  background: #a855f7;
+  top: 50%;
+  right: 18%;
+  opacity: 0.25;
+  animation-delay: -8s;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(24px, -28px) scale(1.08);
+  }
+}
+
+/* ==========================================================================
+   Auth Container & Card
+   ========================================================================== */
+.auth-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 450px;
+}
+
+.auth-card {
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 36px 34px;
+  animation: cardSlideUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header & Brand Badge */
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.brand-badge {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 22px -6px rgba(79, 70, 229, 0.5);
+  transition: transform var(--transition);
+}
+
+.auth-card:hover .brand-badge {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.brand-badge svg {
+  width: 28px;
+  height: 28px;
+}
+
+.brand-badge.small {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+}
+
+.brand-badge.small svg {
+  width: 22px;
+  height: 22px;
+}
+
+.auth-header h1,
+.modal-header h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Alert Banner (Success / Error Feedback)
+   ========================================================================== */
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  animation: fadeSlideDown 0.3s ease;
+}
+
+.alert svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.alert.success {
+  background-color: var(--success-bg);
+  color: #065f46;
+  border-color: var(--success-border);
+}
+
+.alert.error {
+  background-color: var(--error-bg);
+  color: #991b1b;
+  border-color: var(--error-border);
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Form Fields & Input Wrappers
+   ========================================================================== */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 15px;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  transition: color var(--transition);
+}
+
+.input-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding: 12px 44px 12px 44px;
+  font-family: inherit;
+  font-size: 0.94rem;
+  color: var(--text-main);
+  background-color: var(--input-bg);
+  border: 1.5px solid var(--input-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color var(--transition), background-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.input-wrapper input::placeholder {
+  color: var(--text-light);
+}
+
+.input-wrapper input:focus {
+  background-color: #ffffff;
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.14);
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: var(--primary);
+}
+
+/* Validation Visual States */
+.form-group.has-error .input-wrapper input {
+  border-color: var(--error);
+  background-color: #fffafa;
+}
+
+.form-group.has-error .input-wrapper input:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.14);
+}
+
+.form-group.has-error .input-icon {
+  color: var(--error);
+}
+
+.form-group.has-success .input-wrapper input {
+  border-color: var(--success);
+}
+
+.error-message {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--error);
+  min-height: 1.1em;
+  display: none;
+}
+
+.form-group.has-error .error-message {
+  display: block;
+  animation: fadeSlideDown 0.2s ease;
+}
+
+/* Show/Hide Password Toggle Button */
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition), background-color var(--transition);
+}
+
+.toggle-password:hover {
+  color: var(--primary);
+  background-color: rgba(79, 70, 229, 0.08);
+}
+
+.toggle-password svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ==========================================================================
+   Password Strength Meter (Sign Up Page)
+   ========================================================================== */
+.strength-container {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.strength-bar-track {
+  width: 100%;
+  height: 6px;
+  background-color: #e2e8f0;
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.strength-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: var(--radius-pill);
+  transition: width 0.35s ease, background-color 0.35s ease;
+}
+
+.strength-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.strength-text {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.strength-hints {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.strength-hints li {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid #e2e8f0;
+  transition: all var(--transition);
+}
+
+.strength-hints li.met {
+  color: #065f46;
+  background: var(--success-bg);
+  border-color: var(--success-border);
+}
+
+/* ==========================================================================
+   Checkbox & Options Row
+   ========================================================================== */
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.checkbox-label input[type='checkbox'] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.custom-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 1.5px solid var(--input-border);
+  background: var(--input-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+
+.custom-checkbox::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: solid #ffffff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.15s ease;
+  margin-bottom: 2px;
+}
+
+.checkbox-label input:checked + .custom-checkbox {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.checkbox-label input:checked + .custom-checkbox::after {
+  transform: rotate(45deg) scale(1);
+}
+
+.checkbox-label input:focus-visible + .custom-checkbox {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+}
+
+/* Links & Text Buttons */
+.text-link {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+.text-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 20px;
+  font-family: inherit;
+  font-size: 0.96rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition),
+    background-color var(--transition);
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition);
+}
+
+.btn-primary {
+  width: 100%;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+  box-shadow: var(--shadow-btn);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -6px rgba(79, 70, 229, 0.56);
+}
+
+.btn-primary:hover svg {
+  transform: translateX(3px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: #f1f5f9;
+  color: var(--text-main);
+  border: 1px solid #e2e8f0;
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+}
+
+/* ==========================================================================
+   Card Footer
+   ========================================================================== */
+.auth-footer {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Forgot Password Modal
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 0.22s ease;
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-card);
+  animation: cardSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f1f5f9;
+  border: none;
+  color: var(--text-muted);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+.modal-close:hover {
+  background: #e2e8f0;
+  color: var(--text-main);
+}
+
+.modal-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.modal-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.modal-actions .btn {
+  flex: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   Responsive Design (Tablet & Mobile)
+   ========================================================================== */
+@media (max-width: 600px) {
+  body {
+    padding: 16px 12px;
+  }
+
+  .auth-card {
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+
+  .auth-header h1,
+  .modal-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .modal-card {
+    padding: 26px 20px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+}
