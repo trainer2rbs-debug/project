@@ -1,27 +1,27 @@
 /* ==========================================================================
    CSS Variables & Color Palette
-   Clean, professional Indigo + Slate palette with semantic status colors
+   Clean, modern Black & White monochrome palette with semantic status colors
    ========================================================================== */
 :root {
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
-  --primary-light: #eef2ff;
-  --accent: #06b6d4;
+  --primary: #111111;
+  --primary-hover: #000000;
+  --primary-light: #f4f4f5;
+  --accent: #52525b;
 
-  --bg-gradient-start: #0f172a;
-  --bg-gradient-mid: #1e1b4b;
-  --bg-gradient-end: #312e81;
+  --bg-gradient-start: #000000;
+  --bg-gradient-mid: #111111;
+  --bg-gradient-end: #1c1c1e;
 
-  --surface: rgba(255, 255, 255, 0.96);
-  --surface-border: rgba(255, 255, 255, 0.28);
+  --surface: rgba(255, 255, 255, 0.98);
+  --surface-border: rgba(255, 255, 255, 0.25);
 
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --text-light: #94a3b8;
+  --text-main: #09090b;
+  --text-muted: #52525b;
+  --text-light: #a1a1aa;
 
-  --input-bg: #f8fafc;
-  --input-border: #cbd5e1;
-  --input-focus: #4f46e5;
+  --input-bg: #fafafa;
+  --input-border: #d4d4d8;
+  --input-focus: #111111;
 
   --success: #10b981;
   --success-bg: #ecfdf5;
@@ -39,9 +39,9 @@
   --radius-lg: 22px;
   --radius-pill: 9999px;
 
-  --shadow-card: 0 24px 60px -12px rgba(15, 23, 42, 0.45),
-    0 0 0 1px rgba(255, 255, 255, 0.12);
-  --shadow-btn: 0 10px 24px -6px rgba(79, 70, 229, 0.48);
+  --shadow-card: 0 24px 60px -12px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.14);
+  --shadow-btn: 0 10px 24px -6px rgba(0, 0, 0, 0.4);
 
   --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -96,15 +96,15 @@ body {
 .bg-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.45;
+  filter: blur(85px);
+  opacity: 0.18;
   animation: floatOrb 12s ease-in-out infinite alternate;
 }
 
 .orb-1 {
   width: 380px;
   height: 380px;
-  background: #6366f1;
+  background: #ffffff;
   top: -100px;
   left: -80px;
 }
@@ -112,7 +112,7 @@ body {
 .orb-2 {
   width: 340px;
   height: 340px;
-  background: #06b6d4;
+  background: #a1a1aa;
   bottom: -100px;
   right: -60px;
   animation-delay: -4s;
@@ -121,10 +121,10 @@ body {
 .orb-3 {
   width: 240px;
   height: 240px;
-  background: #a855f7;
+  background: #d4d4d8;
   top: 50%;
   right: 18%;
-  opacity: 0.25;
+  opacity: 0.12;
   animation-delay: -8s;
 }
 
@@ -180,12 +180,12 @@ body {
   height: 56px;
   margin: 0 auto 14px;
   border-radius: 16px;
-  background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+  background: linear-gradient(135deg, #000000 0%, #27272a 100%);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 22px -6px rgba(79, 70, 229, 0.5);
+  box-shadow: 0 10px 22px -6px rgba(0, 0, 0, 0.45);
   transition: transform var(--transition);
 }
 
@@ -332,7 +332,7 @@ body {
 .input-wrapper input:focus {
   background-color: #ffffff;
   border-color: var(--input-focus);
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.14);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .input-wrapper:focus-within .input-icon {
@@ -388,7 +388,7 @@ body {
 
 .toggle-password:hover {
   color: var(--primary);
-  background-color: rgba(79, 70, 229, 0.08);
+  background-color: rgba(0, 0, 0, 0.07);
 }
 
 .toggle-password svg {
@@ -409,7 +409,7 @@ body {
 .strength-bar-track {
   width: 100%;
   height: 6px;
-  background-color: #e2e8f0;
+  background-color: #e4e4e7;
   border-radius: var(--radius-pill);
   overflow: hidden;
 }
@@ -444,10 +444,10 @@ body {
   font-size: 0.72rem;
   font-weight: 500;
   color: var(--text-muted);
-  background: #f1f5f9;
+  background: #f4f4f5;
   padding: 2px 8px;
   border-radius: var(--radius-pill);
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e4e4e7;
   transition: all var(--transition);
 }
 
@@ -519,7 +519,7 @@ body {
 }
 
 .checkbox-label input:focus-visible + .custom-checkbox {
-  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.25);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.22);
 }
 
 /* Links & Text Buttons */
@@ -572,14 +572,14 @@ body {
 .btn-primary {
   width: 100%;
   color: #ffffff;
-  background: linear-gradient(135deg, var(--primary) 0%, #6366f1 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, #27272a 100%);
   box-shadow: var(--shadow-btn);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, #18181b 100%);
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px -6px rgba(79, 70, 229, 0.56);
+  box-shadow: 0 14px 28px -6px rgba(0, 0, 0, 0.48);
 }
 
 .btn-primary:hover svg {
@@ -591,13 +591,13 @@ body {
 }
 
 .btn-secondary {
-  background-color: #f1f5f9;
+  background-color: #f4f4f5;
   color: var(--text-main);
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e4e4e7;
 }
 
 .btn-secondary:hover {
-  background-color: #e2e8f0;
+  background-color: #e4e4e7;
 }
 
 /* ==========================================================================
@@ -606,7 +606,7 @@ body {
 .auth-footer {
   margin-top: 24px;
   padding-top: 18px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid #e4e4e7;
   text-align: center;
   font-size: 0.9rem;
   color: var(--text-muted);
@@ -619,7 +619,7 @@ body {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: rgba(15, 23, 42, 0.65);
+  background: rgba(0, 0, 0, 0.72);
   backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
@@ -643,7 +643,7 @@ body {
   position: absolute;
   top: 16px;
   right: 16px;
-  background: #f1f5f9;
+  background: #f4f4f5;
   border: none;
   color: var(--text-muted);
   width: 34px;
@@ -657,7 +657,7 @@ body {
 }
 
 .modal-close:hover {
-  background: #e2e8f0;
+  background: #e4e4e7;
   color: var(--text-main);
 }
 
